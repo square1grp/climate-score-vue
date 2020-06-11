@@ -201,6 +201,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 import heroOneImgSrc from "../assets/images/Hero-1.png";
 import heroTwoImgSrc from "../assets/images/Hero-2.png";
 import heroThreeImgSrc from "../assets/images/Hero-3.png";
@@ -231,9 +233,13 @@ export default {
     };
   },
   methods: {
+    ...mapActions("score", ["getScores"]),
     redirectToScore: function() {
-      this.$router.replace("/score");
+      this.$router.push("/score");
     }
+  },
+  mounted() {
+    this.getScores();
   }
 };
 </script>
