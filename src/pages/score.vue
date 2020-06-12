@@ -34,7 +34,7 @@
 
           <b-col cols="12">
             <p class="text-center text-uppercase find-out-why">
-              <a href="/report">Find out why</a>
+              <a href="javascript:void(0)" v-on:click="redirectToReport()">Find out why</a>
               <br />
               <b-img :src="arrowDownImgSrc" />
             </p>
@@ -107,6 +107,9 @@ export default {
     },
     getAvgScoreOptions: function() {
       return { events: {}, tooltips: { enabled: false } };
+    },
+    redirectToReport: function() {
+      this.$router.push("/report");
     }
   }
 };

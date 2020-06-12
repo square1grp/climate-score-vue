@@ -201,7 +201,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 import heroOneImgSrc from "../assets/images/Hero-1.png";
 import heroTwoImgSrc from "../assets/images/Hero-2.png";
@@ -232,10 +232,20 @@ export default {
       inputAddr: ""
     };
   },
+  computed: {
+    ...mapState({
+      scores: state => state.score.scores
+    })
+  },
   methods: {
     ...mapActions("score", ["getScores"]),
     redirectToScore: function() {
-      this.$router.push("/score");
+      let interval = setInterval(() => {
+        if (this.scores) {
+          clearInterval(interval);
+          this.$router.push("/score");
+        }
+      }, 500);
     }
   },
   mounted() {

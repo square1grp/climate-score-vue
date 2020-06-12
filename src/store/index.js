@@ -9,15 +9,7 @@ import axios from 'axios';
 const scoreModule = {
   namespaced: true,
   state: {
-    scores: {
-      address: '',
-      avgScore: '',
-      droughtScore: '',
-      fireScore: '',
-      floodScore: '',
-      rainScore: '',
-      temperatureScore: ''
-    }
+    scores: null
   },
   actions: {
     getScores(context) {
@@ -57,7 +49,7 @@ const scoreModule = {
   },
   mutations: {
     setScores(state, scores) {
-      state.scores = { ...state.scores, ...scores }
+      state.scores = { ...scores }
     }
   }
 }
